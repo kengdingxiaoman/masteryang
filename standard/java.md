@@ -8,6 +8,7 @@
 ## 命名风格
 
 - 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束。
+
 - 代码中的命名严禁使用拼音与英文混合的方式，避免使用拼音命名，更不允许使用拼音首字母拼接的结果来命名<br/>
   例如：int cbhs  表示的是'成本核算'，这样是绝对不可以的
 - 类名使用 UpperCamelCase 风格，必须遵从驼峰形式，但以下情形例外： DO / BO / DTO / VO / AO
@@ -43,6 +44,7 @@ e. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO
 
 ## 常量定义
 - 不允许任何魔数(magic number, 即未经定义的常量)直接出现在代码中<br/>
+
 例如：String num = 5;
 - long 或者 Long 初始赋值时，必须使用大写的 L，不能是小写的 l，小写容易跟数字 1 混淆，造成误解<br/>
 - 不要使用一个常量类维护所有常量，应该按常量功能进行归类，分开维护
@@ -54,6 +56,7 @@ e. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO
   2. 左大括号前不换行，左大括号后换行
   3. 右大括号前换行，右大括号后还有 else 等代码则不换行； 表示终止的右大括号后必须换行
 - 左小括号和字符之间不出现空格；同样，右小括号和字符之间也不出现空格
+
 - if/for/while/switch/do 等保留字与括号之间都必须加空格
 - 任何二目、 三目运算符的左右两边都需要加一个空格
 - 缩进采用 4 个空格，必须使用缩进
@@ -71,6 +74,7 @@ e. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO
 ## OOP 规范
 - 避免通过一个类的对象引用访问此类的静态变量或静态方法，无谓增加编译器解析成本，直接用类名来访问即可
 - 所有的覆写方法，必须加 /@Override 注解
+
 - 相同参数类型，相同业务含义，才可以使用 Java 的可变参数，避免使用 Object, 可变参数必须放置在参数列表的最后，尽量少使用可变参数
 - 接口过时必须加@Deprecated 注解，并清晰地说明采用的新接口或者新服务是什么
 - 不能使用过时的类或方法，寻找使用新的类和方法
@@ -112,6 +116,7 @@ e. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO
   3. 如果自定义对象做为 Map 的键，那么必须重写 hashCode 和 equals。
 - ArrayList的subList结果不可强转成ArrayList，否则会抛出 ClassCastException，subList 返回的是 ArrayList 的内部类 SubList，并不是 ArrayList
 - 在 subList 场景中， <font color="blue">高度注意</font>对原集合元素个数的修改，会导致子列表的遍历、增加、删除均产生 ConcurrentModificationException 异常
+
 - 使用集合转数组的方法，必须使用集合的 toArray(T[] array)，传入的是类型完全一样的数组，大小就是 list.size()
 - 使用工具类 Arrays.asList()把数组转换成集合时，不能使用其修改集合相关的方法，它的 add/remove/clear 方法会抛出 UnsupportedOperationException 异常
 - 泛型通配符<? extends T>来接收返回的数据，此写法的泛型集合不能使用 add 方法， 而<? super T>不能使用 get 方法，做为接口调用赋值时易出错
@@ -128,6 +133,7 @@ e. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO
 
 ## 并发处理
 - 获取单例对象需要保证线程安全，其中的方法也要保证线程安全
+
 - 线程资源必须通过线程池提供，不允许在应用中自行显式创建线程
 - 线程池不允许使用 Executors 去创建，而是通过 ThreadPoolExecutor 的方式，这样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险
 - SimpleDateFormat 是线程不安全的类，一般不要定义为 static 变量，如果定义为static，必须加锁，或者使用 DateUtils 工具类
@@ -146,11 +152,13 @@ e. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO
 - 在 if/else/for/while/do 语句中必须使用大括号。 即使只有一行代码，不允许使用单行的形式：<br/>
 反例：if (condition) statements， 必须换行
 - 理论上嵌套不允许超过3层
+
 - 除常用方法（如 getXxx/isXxx）等外，不要在条件判断中执行其它复杂的语句，将复杂逻辑判断的结果赋值给一个有意义的布尔变量名，以提高可读性(具体会在可读代码一文中进行描述)
 - 循环体中的语句要考量性能，以下操作尽量移至循环体外处理，如定义对象、变量、获取数据库连接，进行不必要的 try-catch 操作
 
 ## 注释
 - 类、属性、方法的注释必须使用 Javadoc 规范，使用\/\*\*内容\*\/格式，不得使用\/\/xxx 方式
+
 - 所有的抽象方法(包括接口中的方法)必须要用 Javadoc 注释、除了返回值、参数、异常说明外，还必须指出该方法做什么事情，实现什么功能
 - 类，属性，方法一般都需要写注释，有些可以除外，例如：get, set方法
 - 所有的类都必须添加创建者和创建日期
@@ -164,6 +172,7 @@ e. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO
 
 ## 其他
 - 在使用正则表达式时，利用好其预编译功能，可以有效加快正则匹配速度
+
 - 注意 Math.random() 这个方法返回是 double 类型，注意取值的范围 0≤x<1(能够取到零值，注意除零异常)， 如果想获取整数类型的随机数，不要将 x 放大 10 的若干倍然后取整，直接使用 Random 对象的 nextInt 或者 nextLong 方法
 - 获取当前毫秒数 System.currentTimeMillis(); 而不是 new Date().getTime()
 - 任何数据结构的构造或初始化，都应指定大小，避免数据结构无限增长吃光内存
@@ -174,6 +183,7 @@ e. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO
 ## 异常
 - Java 类库中定义的一类 RuntimeException 可以通过预先检查进行规避，而不应该通过 catch 来处理，比如： IndexOutOfBoundsException， NullPointerException 等等
 - 异常不要用来做流程控制，条件控制，因为异常的处理效率比条件分支低
+
 - 对大段代码进行 try-catch，这是不负责任的表现。 catch 时请分清稳定代码和非稳定代码，稳定代码指的是无论如何不会出错的代码。对于非稳定代码的 catch 尽可能进行区分异常类型，再做对应的异常处理
 - 捕获异常是为了处理它，不要捕获了却什么都不处理而抛弃之，如果不想处理它，请将该异常抛给它的调用者。最外层的业务使用者，必须处理异常，将其转化为用户可以理解的内容
 - finally 块必须对资源对象、流对象进行关闭，有异常也要做 try-catch
@@ -193,18 +203,53 @@ e. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO
 ## 日志
 - 应用中不可直接使用日志系统(Log4j、 Logback)中的 API，而应依赖使用日志框架SLF4J 中的 API，使用门面模式的日志框架，有利于维护和各个类的日志处理方式统一
 - 日志文件推荐至少保存 15 天，因为有些异常具备以“周”为频次发生的特点
+
 - 对 trace/debug/info 级别的日志输出，必须使用条件输出形式或者使用占位符的方式
 - 异常信息必须打印堆栈信息
 
 # 数据库
 
 ## SQL语句
+- 禁止使用SELECT \*，只获取必要的字段，需要显示说明列属性
+- 禁止使用INSERT INTO t_xxx VALUES(xxx)，必须显示指定插入的列属性
+- 禁止使用属性隐式转换<br/>
+  SELECT user_id FROM t_user WHERE user_phone = 13812345678 会导致全表扫描，而不能命中user_phone索引<br/>
+  正确的写法是：SELECT user_id FROM t_user WHERE user_phone = \'13812345678\'
+- 禁止在WHERE条件的属性上使用函数或者表达式<br/>
+  SELECT user_id FROM t_user WHERE from_unixtime(day)>='2017-03-25' 会导致day的索引失效，从而进行全表扫描<br/>
+  正确的写法是：SELECT user_id FROM t_user WHERE day>= unix_timestamp('2017-03-25 00:00:00')
+- 禁止负向查询，以及%开头的模糊查询
+  1. 负向查询条件：NOT、!=、<>、!<、!>、NOT IN、NOT LIKE等，会导致全表扫描<br/>
+  负向查询不能使用索引，例如 select * from order where status!=0 and stauts!=1，这样，在 status 上的索引不会起作用，还是进行了全表扫描。
+  2. %开头的模糊查询，会导致全表扫描<br/>
+  前导模糊查询不能使用索引<br/>
+  select * from order where desc like '%XX'<br/>
+  而非前导模糊查询则可以：<br/>
+  select * from order where desc like 'XX%'
 
+  如果已经使用索引缩小了数据的范围，那么使用负向条件是可以的，但单单使用负向条件或者索引的作用范围在负向条件上，那是不允许的
+
+- 禁止使用OR条件，必须改为IN查询
+- 不要使用 count(列名)或 count(常量)来替代 count(\*)， count(\*)是 SQL92 定义的标准统计行数的语法，跟数据库无关，跟 NULL 和非 NULL 无关
+- count(distinct col) 计算该列除 NULL 之外的不重复行数， 注意 count(distinct col1, col2) 如果其中一列全为 NULL，那么即使另一列有不同的值，也返回为 0
+- 当某一列的值全是 NULL 时， count(col)的返回结果为 0，但 sum(col)的返回结果为NULL，因此使用 sum()时需注意 NPE 问题
+- 在代码中写分页查询逻辑时，若 count 结果为 0 应直接返回，避免执行后面的分页语句
+- in 操作, in 后边的集合元素数量应控制在 1000 个之内
+- 多条件查询，应先进行性能分析，例如 mysql 可以使用 explain 进行分析，看看索引的使用情况
+
+## ORM映射
+- 不允许直接拿 HashMap 与 Hashtable 作为查询结果集的输出
+
+- 更新数据表记录时，必须同时更新记录对应的 update_time 字段值为当前时间
+- 不要写一个大而全的数据更新接口，传入为 POJO 类，不管是不是自己的目标更新字段，都进行 update table set c1=value1,c2=value2,c3=value3; 这是不对的。执行 SQL时， 不要更新无改动的字段，一是易出错； 二是效率低； 三是增加 binlog 存储
+- /@Transactional 事务不要滥用。事务会影响数据库的 QPS，另外使用事务的地方需要考虑各方面的回滚方案，包括缓存回滚、搜索引擎回滚、消息补偿、统计修正等
+- 应用程序必须捕获SQL异常，并有相应处理
 
 # 工程结构
 
 ## 应用分层
 - 开放接口层：可直接封装 Service 方法暴露成 RPC 接口；通过 Web 封装成 http 接口；进行网关安全控制、 流量控制等。
+
 - 终端显示层：各个端的模板渲染并执行显示的层。当前主要是 velocity 渲染，JS 渲染，JSP渲染，移动端展示等。
 - Web 层：主要是对访问控制进行转发，各类基本参数校验，或者不复用的业务简单处理等。
 - Service 层：相对具体的业务逻辑服务层。
@@ -221,11 +266,12 @@ e. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO
   3. BO(Business Object) ：业务对象。 可以由 Service 层输出的封装业务逻辑的对象。
   4. QO(Query Object)：数据查询对象，各层接收上层的查询请求。 注：超过 2 个参数的查询封装，禁止使用 Map 类来传输。
   5. VO(View Object) ：显示层对象，通常是 Web 向模板渲染引擎层传输的对
-  
+
 # 安全规范
 
 ## 安全规范
 - 隶属于用户个人的页面或者功能必须进行权限控制校验
+
 - 用户敏感数据禁止直接展示，必须对展示数据进行脱敏，例如手机号，银行卡号等进行前6后4的屏蔽
 - 用户输入的 SQL 参数严格使用参数绑定或者 METADATA 字段值限定，防止 SQL 注入，禁止字符串拼接 SQL 访问数据库
 - 用户请求传入的任何参数必须做有效性验证
