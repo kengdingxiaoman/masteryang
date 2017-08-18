@@ -93,6 +93,8 @@ git push origin master
 
 git clone https://github.com/kengdingxiaoman/learngit.git
 
+当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin
+
 ### 创建仓库
 git init
 
@@ -106,6 +108,10 @@ git push -u origin master
 ### 添加一个本地仓库到远程仓库
 git remote add origin https://github.com/kengdingxiaoman/learngit.git
 git push -u origin master
+
+### 查看远程库信息
+git remote 可以查看远程库信息 <br/>
+git remote -v 能显示更详细的信息，会显示可以抓取和推送的origin的地址。如果没有推送权限，就看不到push的地址。
 
 ## 分支管理
 因为创建、合并和删除分支是非常快的，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。
@@ -134,7 +140,30 @@ git merge \-\-no-ff -m "${commit_message}" <font color="red">${branchname}</font
 合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并
 
 ### 删除分支
-git branch -d <font color="red">${branchname}</font> <br/>
+git branch -d <font color="red">${branchname}</font>
+
+如果要删除一个未合并的分支，会提示你无法删除，如果删除，会丢失修改。可以使用 -D 强行删除：<br/>
+git branch -D <font color="red">${branchname}</font>
+
+## stash功能
+Git还提供了一个stash功能，可以把当前工作现场"储藏"起来，等以后恢复现场后继续工作 <br/>
+常见的情况：当前分支还无法提交，但又必须马上新开一个分支来修复bug，这时如果直接切换回去再开分支，那会造成当前修改消失，当然你可以另外建立一个文件夹获取master代码来做这件事
+
+## 隐藏工作现场
+git stash
+
+## 查看所有工作现场
+git stash list
+
+### 恢复工作现场
+有两种方法可以恢复工作现场： <br/>
+
+- git stash apply 恢复后，stash内容并不删除，你需要用git stash drop来删除
+
+- git stash pop，恢复的同时把stash内容也删了
+
+你也可以多次stash，恢复的时候，先用git stash list查看，然后恢复指定的stash，用命令： <br/>
+$ git stash apply stash@{<font color="red">#num</font>}
 
 ## 名词解释
 
