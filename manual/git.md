@@ -1,5 +1,7 @@
 # git命令积累
 
+Git用<<<<<<<，=======，>>>>>>>标记出不同分支的内容
+
 ## 常用命令
 
 ### 查看本地仓库状态
@@ -28,6 +30,11 @@ git log <font color="red">${filename}</font>
 
 可以加上 参数 \-\-pretty=oneline，这样显示会比较清晰一些<br/>
 git log \-\-pretty=oneline <font color="red">${filename}</font>
+
+更好的命令：
+git log \-\-graph \-\-pretty=oneline \-\-abbrev-commit <br/>
+ \-\-graph命令可以看到分支合并图 <br/>
+\-\-abbrev-commit 则对commit_id进行缩写，不写全
 
 ### 撤销工作区修改
 git checkout \-\- <font color="red">${filename}</font>
@@ -119,9 +126,15 @@ git branch 命令会列出所有分支，当前分支前面会标一个<font col
 git merge <font color="red">${branchname}</font> <br/>
 git merge命令用于合并指定分支到当前分支
 
+默认合并使用 fast forward模式，禁用 fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息
+
+git merge \-\-no-ff -m "${commit_message}" <font color="red">${branchname}</font> <br/>
+因为合并要创建一个新的commit，所以加上-m参数，把commit描述写进去
+
+合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并
+
 ### 删除分支
 git branch -d <font color="red">${branchname}</font> <br/>
-
 
 ## 名词解释
 
