@@ -113,6 +113,10 @@ git push -u origin master
 git remote 可以查看远程库信息 <br/>
 git remote -v 能显示更详细的信息，会显示可以抓取和推送的origin的地址。如果没有推送权限，就看不到push的地址。
 
+### 建立本地分支和远程分支的关系
+如果本地分支和远程分支的链接关系没有创建，可以使用如下命令：<br/>
+git branch --set-upstream <font color="red">${branchname}</font> origin/<font color="red">${branchname}</font>
+
 ## 分支管理
 因为创建、合并和删除分支是非常快的，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。
 
