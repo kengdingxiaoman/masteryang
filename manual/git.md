@@ -169,13 +169,20 @@ git stash list
 你也可以多次stash，恢复的时候，先用git stash list查看，然后恢复指定的stash，用命令： <br/>
 $ git stash apply stash@{<font color="red">#num</font>}
 
-## 不常用命令
+## 冷门命令
 
 ### 计算文件的 sha-1 值
-git hash-object <font color="red"><font color="red">${filename}</font>
+git hash-object <font color="red">${filename}</font>
 
 ### 查看暂存区文件
 git ls-files --stage
+
+### 查看一个object的内容
+git cat-file -p <font color="red">${objectId}</font>
+
+例如：<br/>
+git cat-file -p 345e619a212868c3654ffc873024aacb50cc68f6
+
 
 ## 名词解释
 
