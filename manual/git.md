@@ -153,10 +153,10 @@ git branch -D <font color="red">${branchname}</font>
 Git还提供了一个stash功能，可以把当前工作现场"储藏"起来，等以后恢复现场后继续工作 <br/>
 常见的情况：当前分支还无法提交，但又必须马上新开一个分支来修复bug，这时如果直接切换回去再开分支，那会造成当前修改消失，当然你可以另外建立一个文件夹获取master代码来做这件事
 
-## 隐藏工作现场
+### 隐藏工作现场
 git stash
 
-## 查看所有工作现场
+### 查看所有工作现场
 git stash list
 
 ### 恢复工作现场
@@ -168,6 +168,14 @@ git stash list
 
 你也可以多次stash，恢复的时候，先用git stash list查看，然后恢复指定的stash，用命令： <br/>
 $ git stash apply stash@{<font color="red">#num</font>}
+
+## 不常用命令
+
+### 计算文件的 sha-1 值
+git hash-object <font color="red"><font color="red">${filename}</font>
+
+### 查看暂存区文件
+git ls-files --stage
 
 ## 名词解释
 
