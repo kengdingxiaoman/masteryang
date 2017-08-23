@@ -102,3 +102,16 @@ free -m
 ### 查看操作系统版本
 可以使用命令 lsb_release -a 查看操作系统的版本<br/>
 ![linux_os_version](http://ouruoqnrh.bkt.clouddn.com/os_version.jpg)
+
+### grep命令
+
+####通过命令參数控制上下文
+grep -A|-B|-C <font color="red">${显示行数}</font> <font color="red">${匹配字符串}</font> <font color="red">${文件}</font>
+
+例子：<br/>
+grep -A 5 foo file 显示file文件里匹配foo字串那行及后5行 <br/>
+grep -B 5 foo file 显示file文件里匹配foo字串那行及前5行 <br/>
+grep -C 5 foo file 显示file文件里匹配foo字串那行以及上下5行 <br/>
+
+#### 查看grep版本号的方法是
+grep -V
