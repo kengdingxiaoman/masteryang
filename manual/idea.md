@@ -16,3 +16,9 @@ command + F12
 
 ## 回到上一个光标处
 command + option + 左右键
+
+### 切换窗口
+command + `
+
+### 跳转到实现
+option + shift + b
