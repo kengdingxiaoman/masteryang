@@ -9,3 +9,7 @@ defaults write com.apple.finder AppleShowAllFiles -boolean true ; killall Finder
 command + <- 跳转到行首
 
 command + -> 跳转到行尾
+
+### 剪切
+默认的 command + c ， command + v 只是复制一份
+要想剪切，需要使用 command + option + v
