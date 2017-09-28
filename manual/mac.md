@@ -13,3 +13,8 @@ command + -> 跳转到行尾
 ### 剪切
 默认的 command + c ， command + v 只是复制一份
 要想剪切，需要使用 command + option + v
+
+### 在 Finder 中显示当前目录的完整地址
+
+使用命令：
+defaults write com.apple.finder \_FXShowPosixPathInTitle -bool YES
