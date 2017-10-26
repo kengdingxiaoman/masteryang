@@ -18,3 +18,9 @@ command + -> 跳转到行尾
 
 使用命令：
 defaults write com.apple.finder \_FXShowPosixPathInTitle -bool YES
+
+### 查看端口占用情况
+使用命令：
+sudo lsof -i:<font color="red">${具体端口}</font>
+
+kill -9 <font color="red">{对应进程号}</font>

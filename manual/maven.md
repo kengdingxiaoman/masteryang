@@ -16,6 +16,12 @@ mvn clean install -Dmaven.test.skip=true
 - -DskipTests，不执行测试用例，但会编译测试用例类并生成相应的class文件到target/test-classes下。
 - -Dmaven.test.skip=true，不执行测试用例，也不编译测试用例类。
 
+### 启动项目
+启动项目时一般都是使用插件启动，下面是 jetty 和 spring-boot 项目的启动
+mvn jetty:run
+
+mvn spring-boot:run
+
 ### 查看 maven 项目和模块之间的依赖关系
 mvn dependency:tree
 
