@@ -4,6 +4,8 @@
 使用命令：
 defaults write com.apple.finder AppleShowAllFiles -boolean true ; killall Finder
 
+在finder中使用 shift + command + . 可以快速实现显示和隐藏隐藏文件
+
 ### 跳转到行首或行尾
 
 command + <- 跳转到行首

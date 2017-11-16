@@ -61,3 +61,11 @@ command + F12
 如果你 disable了 fn 键
 
 则使用 fn + command + F12
+
+## settings
+
+### 自动生成 serialVersionUID
+
+Setting -> Inspections -> Serialization issues -> Serializable class without 'serialVersionUID'
+
+选中以后就可以生成 serialVersionUID
