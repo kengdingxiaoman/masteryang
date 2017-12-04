@@ -79,10 +79,10 @@ set password for 'orcauser'@'localhost' = password("12345678");
 修改用户 orcauser 的密码为 12345678
 
 ### 删除用户
-drop user '<font color="red">username</font>'@'locahost';
+drop user '<font color="red">username</font>'@'localhost';
 
 例如：<br/>
-drop user 'orcauser'@'locahost';
+drop user 'orcauser'@'localhost';
 
 ### 赋予用户权限
 
