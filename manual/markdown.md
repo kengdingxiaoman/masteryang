@@ -1,5 +1,18 @@
 # markdown一些功能的使用
 
+## 插入图片
+
+```
+![说明](链接)
+```
+
+例如：
+
+使用图片链接：
+```
+![hmsmock](http://ouruoqnrh.bkt.clouddn.com/hmsmock%E6%B5%81%E7%A8%8B.png)
+```
+
 ## 表格
 
 ```
