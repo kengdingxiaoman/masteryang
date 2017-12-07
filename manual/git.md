@@ -151,6 +151,42 @@ git branch -d <font color="red">${branchname}</font>
 如果要删除一个未合并的分支，会提示你无法删除，如果删除，会丢失修改。可以使用 -D 强行删除：<br/>
 git branch -D <font color="red">${branchname}</font>
 
+## tag 管理
+
+### 创建tag
+git tag -a <font color="red">#version</font> -m <font color="red">'#tag_message'</font>
+
+例如：git tag -a v1.0 -m 'first version'
+
+除了为当前的版本打上tag外，也可以为之前的 commit 添加tag
+
+1. 查看之前的commit git log --oneline
+2. 找到对应的commit: 7cab8a3 fix bug#13754
+3. git tag -a v1.1 #commit_no
+
+所以要执行的命令就是：git tag -a v1.1 7cab8a3
+
+### 查看tag
+命令： git tag 会列出所有的tag
+
+也可以加上限定来查看某几个匹配的tag，例如：
+
+git tag -l v1.*
+
+这样就只会列出 1.X 的版本。
+
+### 删除tag
+git tag -d <font color="red">#version</font>
+
+例如：git tag -d v1.0
+
+就会删除tag v1.0
+
+### 上传tag
+在执行 git push 时，tag是不会上传的，比如 gitHub，在本地创建好 tag 后执行 git push ，在 gitHub网站上是看不到tag的，要执行以下命令才行：
+
+git push origin --tags
+
 ## stash功能
 Git还提供了一个stash功能，可以把当前工作现场"储藏"起来，等以后恢复现场后继续工作 <br/>
 常见的情况：当前分支还无法提交，但又必须马上新开一个分支来修复bug，这时如果直接切换回去再开分支，那会造成当前修改消失，当然你可以另外建立一个文件夹获取master代码来做这件事
